@@ -260,24 +260,19 @@ Este projeto foi desenvolvido com auxílio de IA Generativa:
 
 ## Uso com Placas Físicas
 
-Se você possui uma placa ESP32 física, pode optar por usar o Arduino IDE em vez do PlatformIO. Para isso:
+Para grupos que optarem por usar uma placa ESP32 física:
 
-1. **Arquivo Arduino**
+1. **Arquivo para Arduino**
    - Use o arquivo `q1/esp32_mqtt_dht22.ino`
-   - Este arquivo contém o mesmo código adaptado para Arduino IDE
-   - Todas as funcionalidades são idênticas à versão PlatformIO
+   - Contém o mesmo código e funcionalidades do projeto
 
-2. **Configuração Arduino IDE**
-   - Instale o Arduino IDE
-   - Adicione suporte ao ESP32 ([Tutorial](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/))
-   - Instale as bibliotecas necessárias via Library Manager:
-     - `PubSubClient`
-     - `ArduinoJson`
-     - `DHT sensor library`
-     - `Adafruit Unified Sensor`
+2. **Bibliotecas Necessárias**
+   - `PubSubClient`
+   - `ArduinoJson`
+   - `DHT sensor library`
+   - `Adafruit Unified Sensor`
 
 3. **Configuração do Código**
-   - Abra o arquivo `.ino`
    - Configure suas credenciais Wi-Fi:
      ```cpp
      const char* ssid = "SUA_REDE_WIFI";
@@ -300,4 +295,4 @@ Se você possui uma placa ESP32 física, pode optar por usar o Arduino IDE em ve
      - SIGNAL → GPIO34
    - LED onboard está no GPIO2
 
-> ⚠️ **Importante**: Ao usar uma placa física, certifique-se de que todas as conexões estejam corretas e use resistores pull-up quando necessário. 
+> ⚠️ **Importante**: Verifique todas as conexões antes de energizar a placa e use resistores pull-up quando necessário. 
