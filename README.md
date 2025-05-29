@@ -44,8 +44,8 @@ O projeto utiliza um servidor dedicado com os seguintes recursos já configurado
 ### 1. Clone o Repositório
 
 ```bash
-git clone https://github.com/2TDS-GS2025/iot-esp32-gs.git
-cd iot-esp32-gs
+git clone https://github.com/prof-atritiack/2TDS-GS2025.git
+cd 2TDS-GS2025
 ```
 
 ### 2. Abra o Projeto no VS Code
@@ -82,7 +82,7 @@ const char* moduleID  = "Meu_ESP32";       // ID do seu ESP32
 ## Estrutura do Projeto
 
 ```
-iot-esp32-gs/
+2TDS-GS2025/
 ├── q1/
 │   └── src/
 │       └── main.cpp          # Código principal
