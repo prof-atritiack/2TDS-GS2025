@@ -33,7 +33,7 @@
 // Definições e configurações
 
 #define boardLED 2 // LED onboard
-#define DHTPIN 4   // Pino de dados do DHT
+#define DHTPIN 12   // Pino de dados do DHT
 #define DHTTYPE DHT22 // DHT22 (AM2302)
 
 // Identificadores
