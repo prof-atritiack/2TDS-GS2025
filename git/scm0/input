@@ -1,0 +1,9 @@
+Adiciona estrutura inicial do projeto ESP32 MQTT para monitoramento de temperatura e umidade
+
+- Criado .gitignore para excluir arquivos de build e configuração.
+- Adicionado arquivo LICENSE com Licença MIT.
+- Configurado projeto PlatformIO com platformio.ini.
+- Adicionado README.md com detalhes e instruções do projeto.
+- Incluído arquivos de simulação Wokwi: diagram.json e wokwi.toml.
+- Implementada funcionalidade principal em src/main.cpp para leitura do sensor DHT22 e publicação via MQTT.
+- Configurado recomendações de extensões VS Code em .vscode/extensions.json. 
