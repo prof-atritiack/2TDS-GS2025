@@ -256,4 +256,48 @@ Este projeto foi desenvolvido com auxílio de IA Generativa:
 
 ### Recursos Educacionais
 - [ESP32 - Primeiros Passos](https://randomnerdtutorials.com/getting-started-with-esp32/)
-- [MQTT Essentials](https://www.hivemq.com/mqtt-essentials/) 
+- [MQTT Essentials](https://www.hivemq.com/mqtt-essentials/)
+
+## Uso com Placas Físicas
+
+Se você possui uma placa ESP32 física, pode optar por usar o Arduino IDE em vez do PlatformIO. Para isso:
+
+1. **Arquivo Arduino**
+   - Use o arquivo `q1/esp32_mqtt_dht22.ino`
+   - Este arquivo contém o mesmo código adaptado para Arduino IDE
+   - Todas as funcionalidades são idênticas à versão PlatformIO
+
+2. **Configuração Arduino IDE**
+   - Instale o Arduino IDE
+   - Adicione suporte ao ESP32 ([Tutorial](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/))
+   - Instale as bibliotecas necessárias via Library Manager:
+     - `PubSubClient`
+     - `ArduinoJson`
+     - `DHT sensor library`
+     - `Adafruit Unified Sensor`
+
+3. **Configuração do Código**
+   - Abra o arquivo `.ino`
+   - Configure suas credenciais Wi-Fi:
+     ```cpp
+     const char* ssid = "SUA_REDE_WIFI";
+     const char* password = "SUA_SENHA_WIFI";
+     ```
+   - Ajuste os identificadores:
+     ```cpp
+     const char* ID = "ID_do_Grupo";
+     const char* moduleID = "Meu_ESP32";
+     ```
+
+4. **Conexões Físicas**
+   - DHT22:
+     - VCC → 3.3V
+     - GND → GND
+     - DATA → GPIO12
+   - Potenciômetro:
+     - VCC → 3.3V
+     - GND → GND
+     - SIGNAL → GPIO34
+   - LED onboard está no GPIO2
+
+> ⚠️ **Importante**: Ao usar uma placa física, certifique-se de que todas as conexões estejam corretas e use resistores pull-up quando necessário. 
