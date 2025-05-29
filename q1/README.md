@@ -6,6 +6,16 @@
 > Os alunos devem utilizar esta estrutura como ponto de partida para implementar
 > suas soluções inovadoras de IoT com ESP32.
 
+⚠️ **ATENÇÃO - IMPORTANTE PARA LABORATÓRIOS FIAP**
+> Para o correto funcionamento do projeto nos laboratórios da FIAP, é necessário:
+> 1. Solicitar ao professor a liberação das portas no firewall:
+>    - Porta 1883 (MQTT Broker)
+>    - Porta 1880 (Node-RED Dashboard)
+> 2. Sem essa liberação, não será possível:
+>    - Conectar ao broker MQTT
+>    - Visualizar os dados no dashboard Node-RED
+>    - Testar a comunicação do projeto
+
 Este projeto implementa um sistema de monitoramento usando ESP32 que envia dados de temperatura e umidade via MQTT.
 
 ## Estrutura do Projeto

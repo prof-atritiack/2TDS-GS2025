@@ -10,6 +10,7 @@
  * - ID do módulo
  * - IP local
  * - Dados de temperatura e umidade do sensor DHT22
+ * - Valor analógico do potenciômetro (0-4095)
  * 
  * Baseado no repositório original:
  * https://github.com/arnaldojr/iot-esp32-wokwi-vscode
@@ -32,9 +33,10 @@
 //----------------------------------------------------------
 // Definições e configurações
 
-#define boardLED 2 // LED onboard
-#define DHTPIN 12   // Pino de dados do DHT
-#define DHTTYPE DHT22 // DHT22 (AM2302)
+#define boardLED 2      // LED onboard
+#define DHTPIN 12       // Pino de dados do DHT
+#define DHTTYPE DHT22   // DHT22 (AM2302)
+#define POTPIN 34       // Pino do potenciômetro (GPIO34/ADC6)
 
 // Identificadores
 const char* ID        = "ID_do_Grupo";
@@ -59,11 +61,13 @@ const char* mqttPassword = "q1w2e3r4";
 
 WiFiClient espClient;
 PubSubClient MQTT(espClient);
-char buffer[256]; // Buffer para o JSON serializado
+JsonDocument doc;  // Documento JSON dinâmico
+char buffer[256];  // Buffer para o JSON serializado
 DHT dht(DHTPIN, DHTTYPE);
 
 float temperatura;
 float umidade;
+int valorPot;      // Valor do potenciômetro
 
 //----------------------------------------------------------
 // Conexão Wi-Fi
@@ -134,6 +138,7 @@ void piscaLed() {
 void setup() {
     Serial.begin(115200);
     pinMode(boardLED, OUTPUT);
+    pinMode(POTPIN, INPUT);  // Configura pino do potenciômetro
     digitalWrite(boardLED, LOW);
     dht.begin();
     initWiFi();    
@@ -151,16 +156,19 @@ void loop() {
     temperatura = dht.readTemperature();
     umidade = dht.readHumidity();
 
-    // Montagem do documento JSON
-    StaticJsonDocument<300> doc;
+    // Leitura do potenciômetro
+    valorPot = analogRead(POTPIN);
+
+    // Limpa o documento JSON para nova utilização
+    doc.clear();
 
     // 1. Identificação
-    doc["ID"]     = ID;
+    doc["ID"] = ID;
     doc["Sensor"] = moduleID;
 
     // 2. Rede
-    doc["IP"]     = WiFi.localIP();
-    doc["MAC"]    = WiFi.macAddress();
+    doc["IP"] = WiFi.localIP().toString();
+    doc["MAC"] = WiFi.macAddress();
 
     // 3. Dados de sensores
     if (!isnan(temperatura) && !isnan(umidade)) {
@@ -170,6 +178,9 @@ void loop() {
         doc["Temperatura"] = "Erro na leitura";
         doc["Umidade"] = "Erro na leitura";
     }
+
+    // 4. Dados do potenciômetro
+    doc["Potenciometro"] = valorPot;
 
     // Serializa JSON para string
     serializeJson(doc, buffer);

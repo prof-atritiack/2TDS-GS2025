@@ -1,26 +1,21 @@
 {
   "version": 1,
-  "author": "Arnaldo Viana",
+  "author": "André Tritiack",
   "editor": "wokwi",
   "parts": [
-    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -94.48, "left": 93.8, "attrs": {} },
-    {
-      "type": "wokwi-dht22",
-      "id": "dht1",
-      "top": -109.39,
-      "left": -4.38,
-      "attrs": { "temperature": "15.9", "humidity": "54.5" }
-    }
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 76.8, "left": 100.84, "attrs": {} },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -57.3, "left": -101.4, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": -49.3, "left": -19.4, "attrs": {} }
   ],
   "connections": [
-    [ "dht1:VCC", "esp:5V", "red", [ "v0" ] ],
-    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
-    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
-    [ "dht1:SDA", "esp:11", "green", [ "v0" ] ],
-    [ "dht1:VCC", "esp:3V3.1", "red", [ "v0" ] ],
-    [ "esp:D12", "dht1:SDA", "gold", [ "h0" ] ],
-    [ "esp:3V3", "dht1:VCC", "red", [ "v-0.33", "h11.31", "v51.62", "h-195.79" ] ],
-    [ "esp:GND.2", "dht1:GND", "black", [ "h0" ] ]
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "esp:GND.1", "dht1:GND", "black", [ "h0" ] ],
+    [ "esp:12", "dht1:SDA", "green", [ "v0", "h-95.85" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "esp:34", "pot1:SIG", "gold", [ "h0" ] ]
   ],
   "dependencies": {}
-}
+} 
