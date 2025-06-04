@@ -295,4 +295,63 @@ Para grupos que optarem por usar uma placa ESP32 física:
      - SIGNAL → GPIO34
    - LED onboard está no GPIO2
 
-> ⚠️ **Importante**: Verifique todas as conexões antes de energizar a placa e use resistores pull-up quando necessário. 
+> ⚠️ **Importante**: Verifique todas as conexões antes de energizar a placa e use resistores pull-up quando necessário.
+
+## 📊 Pasta Q2 - Integração com ThingSpeak
+
+A pasta `q2` contém um projeto alternativo que demonstra a integração com a plataforma ThingSpeak para visualização e análise de dados IoT.
+
+### Configuração do ThingSpeak
+
+1. **Pré-requisitos**
+   - Criar uma conta no [ThingSpeak](https://thingspeak.com)
+   - Criar um novo canal no ThingSpeak
+   - Obter o Channel ID e Write API Key
+
+2. **Configurações no Código**
+   Em `q2/src/main.cpp`, configure:
+   ```cpp
+   unsigned long channelID = SEU_CHANNEL_ID;        // Substitua pelo seu Channel ID
+   const char* writeAPIKey = "SUA_WRITE_API_KEY";   // Substitua pela sua Write API Key
+   ```
+
+3. **Dependências Adicionais**
+   - Biblioteca ThingSpeak (será instalada automaticamente pelo PlatformIO)
+
+### Funcionalidades do Projeto Q2
+
+- Conexão automática com WiFi
+- Envio de até 4 campos de dados para o ThingSpeak
+- Intervalo de envio de 20 segundos (respeita limite gratuito)
+- Feedback via monitor serial
+- Reconexão automática em caso de perda de conexão
+
+### Estrutura dos Dados
+
+O projeto envia 4 campos (fields) para o ThingSpeak:
+```cpp
+field1: valor1  // Primeiro valor
+field2: valor2  // Segundo valor
+field3: valor3  // Terceiro valor
+field4: valor4  // Quarto valor
+```
+
+### Visualização no ThingSpeak
+
+1. Acesse sua conta no ThingSpeak
+2. Navegue até seu canal
+3. Visualize os gráficos em tempo real
+4. Configure widgets e análises personalizadas
+
+### Personalização
+
+Você pode modificar o código para:
+- Alterar o número de campos enviados
+- Modificar o intervalo de envio
+- Adicionar mais sensores
+- Implementar lógicas específicas
+
+> ⚠️ **Importante**: 
+> - O plano gratuito do ThingSpeak permite atualizações a cada 15 segundos
+> - Mantenha suas chaves API em segurança
+> - Considere usar variáveis de ambiente para as credenciais 
