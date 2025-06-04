@@ -1,10 +1,32 @@
-# Projeto ESP32 MQTT - Monitoramento de Temperatura e Umidade
+# Projeto ESP32 IoT - Global Solution 2025
 
 > **🌟 PROJETO BASE - GLOBAL SOLUTION 2025**
 > 
-> Este projeto serve como base para o desenvolvimento da Global Solution 2025.
-> Os alunos devem utilizar esta estrutura como ponto de partida para implementar
-> suas soluções inovadoras de IoT com ESP32.
+> ⚠️ **IMPORTANTE**: Este projeto serve APENAS como referência técnica para o desenvolvimento da Global Solution 2025.
+> Os alunos NÃO devem utilizar este código diretamente. Em vez disso, devem desenvolver suas próprias 
+> soluções inovadoras de IoT com ESP32, utilizando este material apenas como guia de implementação.
+
+## 🔄 Opções de Implementação
+
+Este repositório oferece duas opções de implementação para seu projeto IoT:
+
+### 1️⃣ MQTT com Node-RED (Pasta Q1)
+**Características**:
+- Protocolo MQTT para comunicação IoT
+- Visualização de dados via Node-RED
+- Maior flexibilidade na manipulação dos dados
+- Possibilidade de integração com diversos serviços
+- Suporte a múltiplos dispositivos simultâneos
+
+### 2️⃣ ThingSpeak (Pasta Q2)
+**Características**:
+- Implementação direta e simplificada
+- Plataforma pronta para visualização
+- Gráficos e análises integrados
+- Rápida configuração inicial
+- Interface web intuitiva
+
+> 💡 **Dica**: Cada implementação possui características específicas. Analise as funcionalidades e escolha a que melhor atende aos requisitos do seu projeto.
 
 ## ⚠️ ATENÇÃO - IMPORTANTE PARA LABORATÓRIOS FIAP
 
@@ -18,9 +40,27 @@
 >    - Visualizar os dados no dashboard Node-RED
 >    - Testar a comunicação do projeto
 
-## 📝 Descrição
+## 📝 Estrutura do Projeto
 
-O projeto implementa um sistema IoT completo que:
+O repositório contém dois projetos de exemplo:
+
+```
+2TDS-GS2025/
+├── q1/                      # Projeto MQTT com Node-RED
+│   └── src/
+│       └── main.cpp        # Código principal MQTT
+├── q2/                      # Projeto ThingSpeak
+│   └── src/
+│       └── main.cpp        # Código principal ThingSpeak
+├── platformio.ini          # Configuração PlatformIO
+└── README.md               # Documentação
+```
+
+## 📡 Pasta Q1 - Monitoramento via MQTT e Node-RED
+
+### Descrição
+
+O projeto Q1 implementa um sistema IoT completo que:
 
 **Conectividade**
 - Conecta um ESP32 a uma rede Wi-Fi
@@ -39,7 +79,7 @@ O projeto implementa um sistema IoT completo que:
 - Endereço IP
 - Endereço MAC
 
-## Recursos do Servidor
+### Recursos do Servidor Q1
 
 O projeto utiliza um servidor dedicado com:
 
@@ -53,70 +93,7 @@ O projeto utiliza um servidor dedicado com:
   - Dashboard para monitoramento em tempo real
   - Gráficos e indicadores personalizados
 
-## ⚙️ Pré-requisitos
-
-1. **Software**
-   - Visual Studio Code
-   - Extensão PlatformIO IDE
-   - Git (para clonar o repositório)
-
-2. **Simulação**
-   - Conta Wokwi
-   - Licença Wokwi Simulator
-   - Extensão Wokwi no VS Code
-
-## Instalação e Configuração
-
-### 1. Clone o Repositório
-
-```bash
-git clone https://github.com/prof-atritiack/2TDS-GS2025.git
-cd 2TDS-GS2025
-```
-
-### 2. Configuração do VS Code
-
-1. Abra o VS Code
-2. File > Open Folder
-3. Selecione a pasta `2TDS-GS2025`
-4. Aguarde o PlatformIO inicializar
-
-### 3. Configuração do Wokwi
-
-1. Instale a extensão Wokwi
-2. Faça login na sua conta
-3. Verifique a licença ativa
-
-### 4. Dependências
-
-O projeto utiliza as seguintes bibliotecas:
-- ArduinoJson (JSON)
-- DHT sensor library (Sensor)
-- Adafruit Unified Sensor (Base)
-- PubSubClient (MQTT)
-
-> ⚠️ **Importante**: Aguarde a instalação completa das dependências antes de compilar!
-
-### 5. Configuração do Código
-
-Em `q1/src/main.cpp`, configure:
-```cpp
-const char* ID        = "ID_do_Grupo";     // Seu identificador
-const char* moduleID  = "Meu_ESP32";       // Nome do seu ESP32
-```
-
-## Estrutura do Projeto
-
-```
-2TDS-GS2025/
-├── q1/
-│   └── src/
-│       └── main.cpp          # Código principal
-├── platformio.ini            # Configuração
-└── README.md                 # Documentação
-```
-
-## Formato dos Dados
+### Formato dos Dados Q1
 
 O JSON enviado segue este formato:
 ```json
@@ -131,7 +108,97 @@ O JSON enviado segue este formato:
 }
 ```
 
-## Monitor Serial
+### Configuração do Código Q1
+
+Em `q1/src/main.cpp`, configure:
+```cpp
+const char* ID        = "ID_do_Grupo";     // Seu identificador
+const char* moduleID  = "Meu_ESP32";       // Nome do seu ESP32
+```
+
+## 📊 Pasta Q2 - Integração com ThingSpeak
+
+### Descrição
+
+A pasta `q2` contém um projeto alternativo que demonstra a integração com a plataforma ThingSpeak para visualização e análise de dados IoT.
+
+### Configuração do ThingSpeak
+
+1. **Pré-requisitos**
+   - Criar uma conta no [ThingSpeak](https://thingspeak.com)
+   - Criar um novo canal no ThingSpeak
+   - Obter o Channel ID e Write API Key
+
+2. **Configurações no Código**
+   Em `q2/src/main.cpp`, configure:
+   ```cpp
+   unsigned long channelID = SEU_CHANNEL_ID;        // Substitua pelo seu Channel ID
+   const char* writeAPIKey = "SUA_WRITE_API_KEY";   // Substitua pela sua Write API Key
+   ```
+
+### Funcionalidades do Projeto Q2
+
+- Conexão automática com WiFi
+- Envio de até 4 campos de dados para o ThingSpeak
+- Intervalo de envio de 20 segundos (respeita limite gratuito)
+- Feedback via monitor serial
+- Reconexão automática em caso de perda de conexão
+
+### Estrutura dos Dados Q2
+
+O projeto envia 4 campos (fields) para o ThingSpeak:
+```cpp
+field1: valor1  // Primeiro valor
+field2: valor2  // Segundo valor
+field3: valor3  // Terceiro valor
+field4: valor4  // Quarto valor
+```
+
+## ⚙️ Configuração do Ambiente
+
+### Pré-requisitos
+
+1. **Software**
+   - Visual Studio Code
+   - Extensão PlatformIO IDE
+   - Git (para clonar o repositório)
+
+2. **Simulação**
+   - Conta Wokwi
+   - Licença Wokwi Simulator
+   - Extensão Wokwi no VS Code
+
+### Instalação
+
+1. **Clone o Repositório**
+   ```bash
+   git clone https://github.com/prof-atritiack/2TDS-GS2025.git
+   cd 2TDS-GS2025
+   ```
+
+2. **Configuração do VS Code**
+   1. Abra o VS Code
+   2. File > Open Folder
+   3. Selecione a pasta `2TDS-GS2025`
+   4. Aguarde o PlatformIO inicializar
+
+3. **Configuração do Wokwi**
+   1. Instale a extensão Wokwi
+   2. Faça login na sua conta
+   3. Verifique a licença ativa
+
+### Dependências
+
+O projeto utiliza as seguintes bibliotecas:
+- ArduinoJson (JSON)
+- DHT sensor library (Sensor)
+- Adafruit Unified Sensor (Base)
+- PubSubClient (MQTT)
+- ThingSpeak (apenas para Q2)
+
+> ⚠️ **Importante**: Aguarde a instalação completa das dependências antes de compilar!
+
+## 🔍 Monitor Serial
 
 O monitor serial (115200 baud rate) exibe informações detalhadas:
 
@@ -143,20 +210,6 @@ IP: 192.168.1.100
 MAC Address: A4:CF:12:BF:7A:E5
 Conectando ao Broker MQTT...
 Conectado ao Broker!
-```
-
-### Envio de Dados
-```
-{
-    "ID": "2TDS",
-    "Sensor": "ESP32_Lab1",
-    "IP": "192.168.1.100",
-    "MAC": "A4:CF:12:BF:7A:E5",
-    "Temperatura": 25.40,
-    "Umidade": 63.20,
-    "Potenciometro": 2048
-}
-Mensagem publicada com sucesso!
 ```
 
 ### Possíveis Erros
