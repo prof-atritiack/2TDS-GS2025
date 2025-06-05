@@ -198,6 +198,30 @@ O projeto utiliza as seguintes bibliotecas:
 
 > ⚠️ **Importante**: Aguarde a instalação completa das dependências antes de compilar!
 
+## 🛠️ Criação e Inserção de Diagramas Wokwi
+
+### Como criar um novo diagrama no Wokwi Online
+
+1. Acesse [https://wokwi.com/](https://wokwi.com/)
+2. Clique em **"New Project"** e escolha o microcontrolador desejado (ex: ESP32).
+3. Monte seu circuito utilizando os componentes disponíveis.
+4. Salve o projeto e clique em **"Share"** para copiar o link ou baixe o arquivo `diagram.json`.
+
+### Como inserir e editar diagramas neste projeto
+
+1. **Adicione o arquivo do diagrama:**
+   - Baixe o arquivo `diagram.json` do seu projeto Wokwi.
+   - Coloque o arquivo na pasta correspondente do seu projeto local (exemplo: `q1/diagram.json` ou `q2/diagram.json`).
+
+2. **Edição do diagrama:**
+   - Você pode editar o arquivo `diagram.json` diretamente pelo editor de texto (VS Code) ou reimportá-lo no Wokwi para ajustes visuais.
+   - Para editar no Wokwi, clique em **"Import Project"** e selecione seu `diagram.json`.
+
+3. **Simulação:**
+   - Com o arquivo `diagram.json` na pasta do projeto, utilize a extensão Wokwi no VS Code para simular seu circuito junto ao código fonte.
+
+> **Dica:** Mantenha o arquivo `diagram.json` atualizado e versionado junto ao seu código para facilitar revisões e simulações futuras.
+
 ## 🔍 Monitor Serial
 
 O monitor serial (115200 baud rate) exibe informações detalhadas:
@@ -281,6 +305,8 @@ O Node-RED é uma ferramenta poderosa que permite expandir significativamente as
 
 Este projeto é baseado no trabalho original do Professor Arnaldo Viana:
 [Repositório Original](https://github.com/arnaldojr/iot-esp32-wokwi-vscode.git)
+
+- Este projeto utiliza o **GitHub Copilot** e o **Claude 3.5 Sonnet** como assistentes de programação para geração e revisão de código, documentação e automação de tarefas.
 
 ## Suporte
 
@@ -407,4 +433,4 @@ Você pode modificar o código para:
 > ⚠️ **Importante**: 
 > - O plano gratuito do ThingSpeak permite atualizações a cada 15 segundos
 > - Mantenha suas chaves API em segurança
-> - Considere usar variáveis de ambiente para as credenciais 
+> - Considere usar variáveis de ambiente para as credenciais
