@@ -434,3 +434,24 @@ Você pode modificar o código para:
 > - O plano gratuito do ThingSpeak permite atualizações a cada 15 segundos
 > - Mantenha suas chaves API em segurança
 > - Considere usar variáveis de ambiente para as credenciais
+
+## 🔎 Utilização do MQTT Explorer para Mapear Tópicos
+
+Para facilitar o monitoramento, análise e mapeamento dos tópicos MQTT utilizados no seu projeto, recomenda-se o uso do aplicativo **MQTT Explorer**.
+
+### O que é o MQTT Explorer?
+
+O MQTT Explorer é uma ferramenta gráfica gratuita que permite visualizar, explorar e depurar todos os tópicos e mensagens trafegando no seu broker MQTT de forma intuitiva.
+
+### Como utilizar:
+
+1. Baixe e instale o MQTT Explorer em: [https://mqtt-explorer.com/](https://mqtt-explorer.com/)
+2. Abra o aplicativo e clique em **"Connect"**.
+3. Preencha os dados do broker:
+   - **Host:** `172.208.54.189`
+   - **Port:** `1883`
+   - **Username:** `gs2025`
+   - **Password:** `q1w2e3r4`
+4. Clique em **"Connect"** para visualizar todos os tópicos e mensagens em tempo real.
+
+> **Dica:** O MQTT Explorer é excelente para depuração, entendimento da estrutura dos tópicos, análise de payloads e acompanhamento do fluxo de dados entre dispositivos e dashboards.
